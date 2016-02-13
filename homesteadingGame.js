@@ -4,20 +4,14 @@ var crops = [
   {name: "tomato", price: 10, value: 30, current: 0}
 ];
 
-var landTypes = ["brush", "brush", "dirt", "grass", "trees"]
-
-var map = [];
 function Farm(name, money) {
   this.name = name;
   this.money = 2000;
 }
 
-var turnCounter = 0;
-
 function gone(){
   $("#newFarm").css({display: "none"});
 }
-
 
 function popInvo(){
   for (var i = 0; i < crops.length; i++) {
@@ -25,65 +19,11 @@ function popInvo(){
     $("#invoList").append("<li>" + crops[i].name + " : " + crops[i].current + "</li>");
   };
 }
-/*
-function popMap(){
-  var mapW = Math.round(($("#view").width() / 32)-1);
-  var mapH = Math.round(($("#view").height() /32)-1);
-  var count = 0;
-
-  for (var i = 0; i < mapH; i++) {
-    var row =[];
-      for (var j = 0; j < mapW; j++) {
-        row.push(landTypes[Math.floor(Math.random()*landTypes.length)]);
-      };
-    row[(row.length - 1)] = "water";
-    map.push(row);
-  };
-}
-
-function createMap() {
-  map[1][1] = "home";
-  map[2][1] = "home";
-  for (var i = 0; i < map.length; i++) {
-    var newRow = "<tr>";
-    for (var j = 0; j < map[i].length; j++) {
-      var tile;
-      switch (map[i][j]) {
-        case "brush":
-            tile = "<img src='images/brush.gif'/>";
-          break;
-        case "dirt":
-          tile = "<img src='images/dirt.gif'/>";
-          break;
-        case "grass":
-          tile="<img src='images/grass.gif'/>";
-          break;
-        case "soil":
-          tile="<img src='images/soil.gif'/>";
-          break;
-        case "trees":
-          tile="<img src='images/trees.gif'/>";
-          break;
-        case "water":
-          tile="<img src='images/water.gif'/>";
-          break;
-        case "home":
-          tile="<img src='images/home.gif'/>"
-          break;
-        default:
-          tile="unknown";
-      };
-      newRow += "<td>" + tile + "</td>"
-    }
-    newRow += "</tr>"
-    $("#farmGrid").append(newRow);
-  }
-}*/
 
 $("#createNewFarm").click(function(){
   var newFarm = new Farm();
     if($("#newName").val() == ""){
-      newFarm.name = "Nameless"}
+      newFarm.name = "Unnamed"}
       else {newFarm.name = $("#newName").val();};
   $("#newFarm").animate({opacity: 0}, 500);
   $("#newFarm").animate({height: 0, margin: 0, padding: 0}, 500, gone);
@@ -121,8 +61,9 @@ var ground = [
   [0, 0, 33, 34, 43, 43,	43, 43, 43, 43, 43, 43, 43, 43, 43, 43, 44, 36, 37, 38]
   [34, 34, 43, 43, 43, 43, 43, 43,	43, 43, 43, 43, 43, 43, 43, 43,	44, 36, 37, 38],
   [43, 43, 43, 43, 43, 43, 43, 43, 43, 43, 43, 43, 43, 43, 43, 43, 44, 36, 37, 38]
-
 ];
+
+/* The following code was taken from http://blog.sklambert.com/create-a-canvas-tileset-background/*/
 
 var tilesetImage = new Image();
 tilesetImage.src = 'images/tileset.png';
