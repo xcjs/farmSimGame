@@ -1,0 +1,61 @@
+h2 {
+  font-size: 20px;
+  font-weight: bold;
+}
+
+
+#container {
+  background-color: #fffcec;
+  display: table;
+  font-family: Tahoma, sans-serif;
+  height: 100%;
+  position: fixed;
+  width: 100%;
+}
+
+  #controls {
+    background-color: #844ac6;
+    display: table-cell;
+    height: 100%;
+    width: 20%;
+  }
+    #newFarm, #invo {
+      border: 2px solid black;
+      border-radius: 5px;
+      padding: 1em;
+      margin: 1em;
+    }
+
+      #newFarm input, label, button {
+        margin-bottom: 1em;
+      }
+
+    #stats {
+      background-color: #0fbbb1;
+      height: 2em;
+      padding: 1em;
+    }
+
+    #invo {
+      height: 1em;
+      overflow: hidden;
+    }
+
+  #view {
+    background-color: #cddb23;
+    display: table-cell;
+    height: 100%;
+    overflow: auto;
+    width: 80%;
+  }
+
+    #farm {
+      background-color: #d5a5fa;
+      height: 100%;
+      width: 100%;
+    }
+
+      canvas {
+        background-image: url("images/dirt.png");
+        position: absolute;
+      }
