@@ -1,39 +1,38 @@
 <!doctype html>
 <html>
-  <head>
-    <meta charset="utf-8">
-    <title>Homesteading Game Thingy</title>
-    <script src="jquery-1.12.0.min.js"></script>
-    <link rel="stylesheet" type="text/css" media="screen" href="reset.css"/>
-    <link rel="stylesheet" type="text/css" media="screen" href="hg.css"/>
-  </head>
-  <body>
-    <div id="container">
-
-      <div id="controls">
-        <div id="stats">
-          <span id="name"></span>
-          <span id="money"></span> <br/>
-          <span id="turn"></span>
-        </div>
-        <div id="newFarm">
-          <form onsubmit="return false;">
-            <label for="newName"><h2> Name your new farm!</h2></label> <br/>
-              <input id="newName" name="newName"/> <br/>
-            <button id="createNewFarm" type="submit">Start New Farm</button>
-          </form>
-        </div>
-        <div id="invo">
-          <h2> Inventory </h2>
-          <ul id="invoList"></ul>
-        </div>
-      </div>
-      <div id="view">
-        <div id="farm">
-          <canvas id="map" height="640px" width="640px"></canvas>
-        </div>
-      </div>
-    </div>
+	<head>
+    	<meta charset="utf-8">
+    	<title>Homesteading Game Thingy</title>
+    	<script src="jquery-1.12.0.min.js"></script>
+    	<link rel="stylesheet" type="text/css" media="screen" href="reset.css"/>
+    	<link rel="stylesheet" type="text/css" media="screen" href="hg.css"/>
+  	</head>
+  	<body>
+    	<div id="container">
+	      	<div id="controls">
+	        	<div id="stats">
+	          	<span id="name"></span>
+	          	<span id="money"></span> <br/>
+	          	<span id="turn"></span>
+	    	</div>
+	        <div id="newFarm">
+				<form onsubmit="return false;">
+	            	<label for="newName"><h2> Name your new farm!</h2></label> <br/>
+	              	<input id="newName" name="newName"/> <br/>
+	            	<button id="createNewFarm" type="submit">Start New Farm</button>
+	          	</form>
+	        </div>
+	    	<div id="invo">
+	      		<h2> Inventory </h2>
+	      		<ul id="invoList"></ul>
+	    	</div>
+		</div>
+		<div id="view">
+        	<div id="farm">
+      			<canvas id="map" height="640px" width="640px"></canvas>
+        	</div>
+  		</div>
+	</div>
     <script src="homesteadingGame.js"></script>
-  </body>
+	</body>
 </html>
