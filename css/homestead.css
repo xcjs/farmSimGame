@@ -56,6 +56,6 @@ h2 {
     }
 
       canvas {
-        background-image: url("images/dirt.png");
+        background-image: url("../images/dirt.png");
         position: absolute;
       }
