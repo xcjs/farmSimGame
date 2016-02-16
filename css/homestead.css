@@ -46,6 +46,7 @@ h2 {
     display: table-cell;
     height: 100%;
     overflow: auto;
+    vertical-align: top;
     width: 80%;
   }
 
