@@ -46,6 +46,7 @@ h2 {
     display: table-cell;
     height: 100%;
     overflow: auto;
+    vertical-align: top;
     width: 80%;
   }
 
@@ -56,6 +57,6 @@ h2 {
     }
 
       canvas {
-        background-image: url("images/dirt.png");
+        background-image: url("../images/dirt.png");
         position: absolute;
       }
