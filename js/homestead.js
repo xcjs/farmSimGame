@@ -64,7 +64,7 @@ var ground = [
 /* The following code was adapted from http://blog.sklambert.com/create-a-canvas-tileset-background/*/
 
 var tilesetImage = new Image();
-tilesetImage.src = 'images/tileset.png';
+tilesetImage.src = 'images/tile-set.png';
 tilesetImage.onload = drawImage;
 var canvas = document.getElementById("map");
 var ctx = canvas.getContext('2d');
@@ -91,9 +91,20 @@ function getPosition(event)
   var x = event.x;
   var y = event.y;
 
-
   x -= canvas.offsetLeft;
   y -= canvas.offsetTop;
 
+  var column = Math.floor(x/32);
+  var row = Math.floor(y/32);
+  var tileType = ground[row][column];
+
   console.log("x:" + x + " y:" + y);
+  console.log(tileType);
+
+  switch (tileType) {
+    case 33:
+    case 34:
+    case 35:
+      console.log("This is brush")
+  };
 }
