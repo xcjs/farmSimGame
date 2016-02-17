@@ -32,8 +32,6 @@ $("#createNewFarm").click(function(){
 
 
   popInvo();
-  popMap();
-  createMap();
 });
 
 $("#invo h2").click(function(){
@@ -57,13 +55,13 @@ var ground = [
   [40, 40, 40, 40, 40, 40, 50, 33, 43, 43, 43, 43, 34, 34, 43, 43, 44, 36, 37, 38],
   [40, 40, 40, 40, 40, 41, 33, 43, 43, 43, 43, 43, 43, 43, 43, 43, 44, 36, 37, 38],
   [40, 40, 49, 49, 49, 50, 42, 43, 43, 43, 43, 43, 43, 43, 43, 43, 44, 36, 37, 38],
-  [49, 50, 00,	0, 33, 34, 43, 43, 43, 43, 43, 43, 43, 43, 43, 43, 44, 36, 37, 38],
+  [49, 50, 00, 00, 33, 34, 43, 43, 43, 43, 43, 43, 43, 43, 43, 43, 44, 36, 37, 38],
   [00, 00, 33, 34, 43, 43, 43, 43, 43, 43, 43, 43, 43, 43, 43, 43, 44, 36, 37, 38],
   [34, 34, 43, 43, 43, 43, 43, 43, 43, 43, 43, 43, 43, 43, 43, 43, 44, 36, 37, 38],
   [43, 43, 43, 43, 43, 43, 43, 43, 43, 43, 43, 43, 43, 43, 43, 43, 44, 36, 37, 38]
 ];
 
-/* The following code was taken from http://blog.sklambert.com/create-a-canvas-tileset-background/*/
+/* The following code was adapted from http://blog.sklambert.com/create-a-canvas-tileset-background/*/
 
 var tilesetImage = new Image();
 tilesetImage.src = 'images/tileset.png';
@@ -83,4 +81,19 @@ function drawImage () {
          ctx.drawImage(tilesetImage, (tileCol * tileSize), (tileRow * tileSize), tileSize, tileSize, (c * tileSize), (r * tileSize), tileSize, tileSize);
       }
    }
+}
+
+// This code was adapted from http://miloq.blogspot.com/2011/05/coordinates-mouse-click-canvas.html
+canvas.addEventListener("mousedown", getPosition, false);
+
+function getPosition(event)
+{
+  var x = event.x;
+  var y = event.y;
+
+
+  x -= canvas.offsetLeft;
+  y -= canvas.offsetTop;
+
+  console.log("x:" + x + " y:" + y);
 }
