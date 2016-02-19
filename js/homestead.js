@@ -93,10 +93,25 @@ function drawImage () {
    }
 }
 
-$("#zoom").click(function(){
-  context.clearRect(0, 0, canvas.width, canvas.height);
-  context.scale(2, 2);
-  drawImage();
+var n = 0;
+$("#scaleUp").click(function(){
+  if(n<0) {
+    context.clearRect(0, 0, canvas.width, canvas.height);
+    context.scale(2, 2);
+    drawImage();
+    n++;
+    console.log(n);
+  };
+});
+
+$("#scaleDown").click(function(){
+  if(n>-3){
+    context.clearRect(0, 0, canvas.width, canvas.height);
+    context.scale(0.5, 0.5);
+    drawImage();
+    n--;
+    console.log(n);
+  };
 });
 
 // This code was adapted from http://miloq.blogspot.com/2011/05/coordinates-mouse-click-canvas.html
