@@ -9,15 +9,14 @@ function Farm() {
   this.money = 2000;
 }
 
-var tileDictionary = {
-  dirt: {},
+var landDictionary = {
+  dirt: {name: dirt, tilePos: 1},
   grass:{},
   brush:{},
   water:{},
   clay:{},
   stone:{}
 };
-
 
 function gone(){
   $("#newFarm").css({display: "none"});
