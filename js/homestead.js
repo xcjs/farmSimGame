@@ -4,10 +4,20 @@ var crops = [
   {name: "tomato", price: 10, value: 30, current: 0}
 ];
 
-function Farm(name, money) {
+function Farm() {
   this.name = name;
   this.money = 2000;
 }
+
+var tileDictionary = {
+  dirt: {},
+  grass:{},
+  brush:{},
+  water:{},
+  clay:{},
+  stone:{}
+};
+
 
 function gone(){
   $("#newFarm").css({display: "none"});
@@ -67,7 +77,7 @@ var tilesetImage = new Image();
 tilesetImage.src = 'images/tile-set.png';
 tilesetImage.onload = drawImage;
 var canvas = document.getElementById("map");
-var ctx = canvas.getContext('2d');
+var context = canvas.getContext('2d');
 var tileSize = 32;       // The size of a tile (32×32)
 var rowTileCount = 20;   // The number of tiles in a row of our background
 var colTileCount = 20;   // The number of tiles in a column of our background
@@ -78,10 +88,16 @@ function drawImage () {
          var tile = ground[ r ][ c ];
          var tileRow = (tile / imageNumTiles) | 0; // Bitwise OR operation
          var tileCol = (tile % imageNumTiles) | 0;
-         ctx.drawImage(tilesetImage, (tileCol * tileSize), (tileRow * tileSize), tileSize, tileSize, (c * tileSize), (r * tileSize), tileSize, tileSize);
+         context.drawImage(tilesetImage, (tileCol * tileSize), (tileRow * tileSize), tileSize, tileSize, (c * tileSize), (r * tileSize), tileSize, tileSize);
       }
    }
 }
+
+$("#zoom").click(function(){
+  context.clearRect(0, 0, canvas.width, canvas.height);
+  context.scale(2, 2);
+  drawImage();
+});
 
 // This code was adapted from http://miloq.blogspot.com/2011/05/coordinates-mouse-click-canvas.html
 canvas.addEventListener("mousedown", getPosition, false);
@@ -101,10 +117,16 @@ function getPosition(event)
   console.log("x:" + x + " y:" + y);
   console.log(tileType);
 
-  switch (tileType) {
-    case 33:
-    case 34:
-    case 35:
-      console.log("This is brush")
   };
-}
+
+  $('#map').bind('mousewheel', function (e) {
+      if (e.originalEvent.wheelDelta / 120 > 0) {
+        context.clearRect(0, 0, canvas.width, canvas.height);
+        context.scale(2, 2);
+        drawImage();
+      } else {
+        context.clearRect(0, 0, canvas.width, canvas.height);
+        scale = context.scale(0.5, 0.5);
+        drawImage();
+      }
+  });
