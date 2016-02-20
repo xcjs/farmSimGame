@@ -10,7 +10,7 @@ function Farm() {
 }
 
 var landDictionary = {
-  dirt: {name: dirt, tilePos: 1},
+  dirt: {name: 'dirt', tilePos: 1},
   grass:{},
   brush:{},
   water:{},
