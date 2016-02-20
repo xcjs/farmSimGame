@@ -1,4 +1,33 @@
-var crops = [
+var Homestead = function(canvasId) {
+  var self = this;
+  this.canvas = document.getElementById(canvasId);
+
+  this.bindEvents = function() {
+    $(document).ready(self.events.resize);
+    $(window).resize(self.events.resize)
+  };
+
+  this.environment = {
+    viewport: {
+      height: window.innerHeight,
+      width: window.innerWidth
+    }
+  };
+
+  this.events = {
+    resize: function() {
+      self.canvas.height = self.environment.viewport.height;
+      self.canvas.width = self.environment.viewport.width;
+    }
+  };
+};
+
+(function() {
+  var game = new Homestead('map');
+  game.bindEvents();
+})();
+
+/*var crops = [
   {name: "bean", price: 5, value: 15, current: 0},
   {name: "corn", price: 10, value: 35, current: 0},
   {name: "tomato", price: 10, value: 30, current: 0}
@@ -72,7 +101,7 @@ var ground = [
 
 /* The following code was adapted from http://blog.sklambert.com/create-a-canvas-tileset-background/*/
 
-var tilesetImage = new Image();
+/*var tilesetImage = new Image();
 tilesetImage.src = 'images/tile-set.png';
 tilesetImage.onload = drawImage;
 var canvas = document.getElementById("map");
@@ -143,4 +172,4 @@ function getPosition(event)
         scale = context.scale(0.5, 0.5);
         drawImage();
       }
-  });
+  });*/
