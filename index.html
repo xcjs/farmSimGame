@@ -4,11 +4,30 @@
     	<meta charset="utf-8">
     	<title>Homestead.js</title>
     	<link rel="stylesheet" href="css/reset.css">
-    	<link rel="stylesheet" href="css/canvas.css">
     	<link rel="stylesheet" href="css/homestead.css">
+    	<link rel="stylesheet" href="css/canvas.css">
+    	<link rel="stylesheet" href="css/controls.css">
   	</head>
   	<body>
   		<canvas id="map"></canvas>
+  		<div class="controls-container controls-stats">
+  			<div class="stat-line">
+				<label>Name</label>
+				<span class="value">&lt;none&gt;</span>
+			</div>
+  			<div class="stat-line">
+				<label>$$$</label>
+				<span class="value">0</span>
+			</div>
+  			<div class="stat-line">
+				<label>Turn</label>
+				<span class="value">0</span>
+			</div>
+  		</div>
+  		<div class="controls-container controls-map">
+			<button id="zoomOut">-</button>
+			<button id="zoomIn">+</button>
+  		</div>
     	<!--<div id="container">
     		
 	    	<div id="controls">
@@ -32,8 +51,7 @@
 		      		<ul id="invoList"></ul>
 		    	</div>
 
-					<button id="scaleUp"> + </button><br/>
-					<button id="scaleDown"> - </button>
+					
 				</div>
 		<div id="view">
         	<div id="farm">

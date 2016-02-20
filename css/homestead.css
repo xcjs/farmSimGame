@@ -1,4 +1,9 @@
-h2 {
+html, body {
+  font-family: sans-serif;
+  font-size: 14px;
+}
+
+/*h2 {
   font-size: 20px;
   font-weight: bold;
 }
@@ -57,6 +62,6 @@ h2 {
     }
 
       canvas {
-        background-image: url("../images/dirt.png");
+        
         position: absolute;
-      }
+      }*/
