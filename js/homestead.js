@@ -1,31 +1,36 @@
-var Homestead = function(canvasId) {
-  var self = this;
-  this.canvas = document.getElementById(canvasId);
-
-  this.bindEvents = function() {
-    $(document).ready(self.events.resize);
-    $(window).resize(self.events.resize)
-  };
-
-  this.environment = {
-    viewport: {
-      height: window.innerHeight,
-      width: window.innerWidth
-    }
-  };
-
-  this.events = {
-    resize: function() {
-      self.canvas.height = self.environment.viewport.height;
-      self.canvas.width = self.environment.viewport.width;
-    }
-  };
-};
-
-(function() {
-  var game = new Homestead('map');
-  game.bindEvents();
+(function () {
+    var game = new Homestead('map');
+    game.bindEvents();
 })();
+
+function Homestead(canvasId) {
+    var self = this;
+
+    this.canvas = document.getElementById(canvasId);
+
+    this.environment = {
+        viewport: {
+            height: window.innerHeight,
+            width: window.innerWidth
+        }
+    };
+
+    this.events = {
+        resize: function () {
+            self.canvas.height = self.environment.viewport.height;
+            self.canvas.width = self.environment.viewport.width;
+        }
+    };
+
+    // Expose Functions -------------------------------------------------------/
+    this.bindEvents = bindEvents;
+
+    // Declare Functions ------------------------------------------------------/
+    function bindEvents() {
+        $(document).ready(self.events.resize);
+        $(window).resize(self.events.resize)
+    };
+};
 
 /*var crops = [
   {name: "bean", price: 5, value: 15, current: 0},
