@@ -13,9 +13,10 @@ function Homestead(canvasId) {
     // DOM Elements -----------------------------------------------------------/
     this.canvas = document.getElementById(canvasId);
 
-    // Literals ---------------------------------------------------------------/
+    // Properties -------------------------------------------------------------/
     this.environment = environment;
     this.events = events;
+    this.farm = new Farm();
 
     // Methods ----------------------------------------------------------------/
     this.init = init;
@@ -26,6 +27,13 @@ function Homestead(canvasId) {
             height: window.innerHeight,
             width: window.innerWidth
         }
+    };
+
+    var controls = {
+    	zoom: {
+    		in: $('#zoomIn'),
+    		out: $('#zoomOut')
+    	}
     };
 
     var events = {
@@ -61,6 +69,14 @@ function Homestead(canvasId) {
     function Farm() {
         var _name = null;
         var _money = 2000;
+        var _map = null;
+
+        this.getName = getName;
+        this.setName = setName;
+        this.getMoney = getMoney;
+        this.setMoney = setMoney;
+        this.getMap = getMap;
+        this.setMap = setMap;
 
         function getName() {
     		return _name;
@@ -77,6 +93,258 @@ function Homestead(canvasId) {
         function setMoney(money) {
         	_money = money;
         };
+
+        function getMap() {
+    		return _map;
+        };
+
+        function setMap(map) {
+        	_map = map;
+        };
+
+        function Map() {
+        	this.draw = draw;
+
+        	function draw() {
+
+        	};
+        };
+
+        function Tile() {
+    		this.getType = getType;
+    		this.setType = setType;
+    		this.getTileTypes = getTileTypes;
+
+    		var type = null;
+    		var size = 32;
+
+    		var _tileTypes = {
+    			dirt: { 
+    				pos: {
+    					c: {
+    						x: 1,
+							y: 0
+    					}
+    				}
+    			},
+    			grass:{
+    				pos: {
+    					nw: {
+    						x: 0,
+    						y: 0
+    					}
+    					n: {
+    						x: 0,
+    						y: 0
+    					}
+    					ne: {
+    						x: 0,
+    						y: 0
+    					}
+    					w: {
+    						x: 0,
+    						y: 0
+    					}
+    					c: {
+    						x: 0,
+    						y: 0
+    					}
+    					e: {
+    						x: 0,
+    						y: 0
+    					},
+    					sw: {
+    						x: 0,
+    						y: 0
+    					},
+    					s: {
+    						x: 0,
+    						y: 0
+    					},
+    					se: {
+    						x: 0,
+    						y: 0
+    					}
+    				}
+    			},
+    			brush:{
+    				pos: {
+    					nw: {
+    						x: 0,
+    						y: 0
+    					}
+    					n: {
+    						x: 0,
+    						y: 0
+    					}
+    					ne: {
+    						x: 0,
+    						y: 0
+    					}
+    					w: {
+    						x: 0,
+    						y: 0
+    					}
+    					c: {
+    						x: 0,
+    						y: 0
+    					}
+    					e: {
+    						x: 0,
+    						y: 0
+    					},
+    					sw: {
+    						x: 0,
+    						y: 0
+    					},
+    					s: {
+    						x: 0,
+    						y: 0
+    					},
+    					se: {
+    						x: 0,
+    						y: 0
+    					}
+    				}
+    			},
+    			water:{
+    				pos: {
+    					nw: {
+    						x: 0,
+    						y: 0
+    					}
+    					n: {
+    						x: 0,
+    						y: 0
+    					}
+    					ne: {
+    						x: 0,
+    						y: 0
+    					}
+    					w: {
+    						x: 0,
+    						y: 0
+    					}
+    					c: {
+    						x: 0,
+    						y: 0
+    					}
+    					e: {
+    						x: 0,
+    						y: 0
+    					},
+    					sw: {
+    						x: 0,
+    						y: 0
+    					},
+    					s: {
+    						x: 0,
+    						y: 0
+    					},
+    					se: {
+    						x: 0,
+    						y: 0
+    					}
+    				}
+    			},
+    			clay:{
+    				pos: {
+    					nw: {
+    						x: 0,
+    						y: 0
+    					}
+    					n: {
+    						x: 0,
+    						y: 0
+    					}
+    					ne: {
+    						x: 0,
+    						y: 0
+    					}
+    					w: {
+    						x: 0,
+    						y: 0
+    					}
+    					c: {
+    						x: 0,
+    						y: 0
+    					}
+    					e: {
+    						x: 0,
+    						y: 0
+    					},
+    					sw: {
+    						x: 0,
+    						y: 0
+    					},
+    					s: {
+    						x: 0,
+    						y: 0
+    					},
+    					se: {
+    						x: 0,
+    						y: 0
+    					}
+    				}
+    			},
+    			stone:{
+    				pos: {
+    					nw: {
+    						x: 0,
+    						y: 0
+    					}
+    					n: {
+    						x: 0,
+    						y: 0
+    					}
+    					ne: {
+    						x: 0,
+    						y: 0
+    					}
+    					w: {
+    						x: 0,
+    						y: 0
+    					}
+    					c: {
+    						x: 0,
+    						y: 0
+    					}
+    					e: {
+    						x: 0,
+    						y: 0
+    					},
+    					sw: {
+    						x: 0,
+    						y: 0
+    					},
+    					s: {
+    						x: 0,
+    						y: 0
+    					},
+    					se: {
+    						x: 0,
+    						y: 0
+    					}
+    				}
+    			}
+    		};
+
+    		function getType() {
+    			return _type;
+    		}
+
+    		function getSize() {
+    			return _size;
+    		}
+
+    		function setType(type) {
+    			_type = type;
+    		}
+
+    		function getTileTypes() {
+    			return _tileTypes;
+    		}
+        }
     }    
 
     // Declare Functions ------------------------------------------------------/
@@ -92,15 +360,6 @@ function Homestead(canvasId) {
 };
 
 /*
-
-var landDictionary = {
-  dirt: {name: 'dirt', tilePos: 1},
-  grass:{},
-  brush:{},
-  water:{},
-  clay:{},
-  stone:{}
-};
 
 function gone(){
   $("#newFarm").css({display: "none"});
