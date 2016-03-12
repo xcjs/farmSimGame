@@ -1,47 +1,97 @@
 (function () {
+	'use strict';
+
     var game = new Homestead('map');
-    game.bindEvents();
+    game.init();
 })();
 
 function Homestead(canvasId) {
+	'use strict';
+
     var self = this;
 
+    // DOM Elements -----------------------------------------------------------/
     this.canvas = document.getElementById(canvasId);
 
-    this.environment = {
+    // Literals ---------------------------------------------------------------/
+    this.environment = environment;
+    this.events = events;
+
+    // Methods ----------------------------------------------------------------/
+    this.init = init;
+
+    // Declare Literals -------------------------------------------------------/
+    var environment = {
         viewport: {
             height: window.innerHeight,
             width: window.innerWidth
         }
     };
 
-    this.events = {
+    var events = {
         resize: function () {
-            self.canvas.height = self.environment.viewport.height;
-            self.canvas.width = self.environment.viewport.width;
+            self.canvas.height = environment.viewport.height;
+            self.canvas.width = environment.viewport.width;
         }
     };
 
-    // Expose Functions -------------------------------------------------------/
-    this.bindEvents = bindEvents;
+    var crops = [
+	  {
+	  	name: "bean", 
+	  	price: 5, 
+	  	value: 15, 
+	  	current: 0
+	  },
+	  {
+	  	name: "corn", 
+	  	price: 10, 
+	  	value: 35, 
+	  	current: 0
+	  },
+	  {
+	  	name: "tomato", 
+	  	price: 10, 
+	  	value: 30, 
+	  	current: 0
+	  }
+	];
+
+    // Declare Objects --------------------------------------------------------/
+
+    function Farm() {
+        var _name = null;
+        var _money = 2000;
+
+        function getName() {
+    		return _name;
+        };
+
+        function setName(name) {
+    		_name = name;
+        };
+
+        function getMoney() {
+        	return _money;
+        };
+
+        function setMoney(money) {
+        	_money = money;
+        };
+    }    
 
     // Declare Functions ------------------------------------------------------/
+
+    function init() {
+    	bindEvents();
+    };
+
     function bindEvents() {
-        $(document).ready(self.events.resize);
-        $(window).resize(self.events.resize)
+        $(document).ready(events.resize);
+        $(window).resize(events.resize)
     };
 };
 
-/*var crops = [
-  {name: "bean", price: 5, value: 15, current: 0},
-  {name: "corn", price: 10, value: 35, current: 0},
-  {name: "tomato", price: 10, value: 30, current: 0}
-];
-
-function Farm() {
-  this.name = name;
-  this.money = 2000;
-}
+/*
 
 var landDictionary = {
   dirt: {name: 'dirt', tilePos: 1},
